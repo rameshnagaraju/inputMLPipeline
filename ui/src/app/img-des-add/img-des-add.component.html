@@ -1,0 +1,101 @@
+<div class="container">
+    <form #f="ngForm" (ngSubmit)="upload(f)">
+        <span style="color:red;" *ngIf="message">{{ message }}</span>
+        <div class="form-group">
+            <input
+                #file
+                type="file"
+                accept="image/*"
+                (change)="preview(file.files)"
+                class="form-control"
+            />
+        </div>
+
+        <div *ngIf="imgURL">
+            <img [src]="imgURL" height="100" />
+        </div>
+
+        <div class="form-group">
+            <label for="ides" *ngIf="imgURL">Description</label>
+            <textarea
+                required
+                minlength="1"
+                ngModel
+                name="ides"
+                id="ides"
+                cols="20"
+                rows="3"
+                class="form-control"
+                *ngIf="imgURL"
+            ></textarea>
+        </div>
+
+        <div class="form-group">
+            <button class="btn btn-primary" class="form-control" *ngIf="imgURL">
+                Upload
+            </button>
+        </div>
+    </form>
+    <div class="progress" *ngIf="showProgressBar">
+        <div
+            class="progress-bar progress-bar-striped bg-success"
+            role="progressbar"
+            [style.width]="(uploadProgress | async) + '%'"
+            [attr.aria-valuenow]="uploadProgress | async"
+            aria-valuemin="0"
+            aria-valuemax="100"
+        ></div>
+    </div>
+    <br />
+    <div
+        class="btn-group"
+        role="group"
+        *ngIf="(uploadState | async); let state"
+    >
+        <button
+            type="button"
+            class="btn btn-primary"
+            (click)="task.pause()"
+            [disabled]="state === 'paused'"
+        >
+            Pause
+        </button>
+        <button
+            type="button"
+            class="btn btn-primary"
+            (click)="task.cancel()"
+            [disabled]="!(state === 'paused' || state === 'running')"
+        >
+            Cancel
+        </button>
+        <button
+            type="button"
+            class="btn btn-primary"
+            (click)="task.resume()"
+            [disabled]="state === 'running'"
+        >
+            Resume
+        </button>
+    </div>
+    <br /><br />
+    <div
+        *ngIf="(downloadURL | async); let idownloadSrc"
+        class="alert alert-info"
+        role="alert"
+    >
+        File uploaded: <a [href]="downloadSrc">{{ downloadSrc }}</a>
+    </div>
+
+    <div *ngIf="showNextBtn">
+        <button type="button" class="btn btn-primary" (click)="nextImageHlr()">
+            Add new Image
+        </button>
+    </div>
+    <br />
+    <br />
+    <div *ngIf="showNextBtn">
+        <button type="button" class="btn btn-primary" (click)="gotoHomeHlr()">
+            Done
+        </button>
+    </div>
+</div>

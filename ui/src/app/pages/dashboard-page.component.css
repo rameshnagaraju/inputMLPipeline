@@ -1,0 +1,22 @@
+.dashboardStyle {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    background-color: black;
+    color: white;
+}
+
+.zeroDivStyle {
+    margin: 0;
+    padding: 0;
+    border: thin solid black;
+}
+
+.leftSideBarStyle {
+    margin: 0;
+    padding: 10px;
+    min-height: 100vh;
+    background-color: white;
+    color: blue;
+    border-right: thin solid white;
+}

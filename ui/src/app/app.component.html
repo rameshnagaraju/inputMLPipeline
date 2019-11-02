@@ -1,0 +1,66 @@
+<nav class="navbar navbar-default navBarStyle">
+    <div class="container-fluid zeromarginpaddingStyle">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <a class="navbar-brand" [routerLink]="['']"
+                ><p class="menuItemStyle">AI-Image-Studio</p></a
+            >
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li
+                    routerLinkActive="active"
+                    [routerLinkActiveOptions]="{ exact: true }"
+                >
+                    <a class="menuItemStyle" [routerLink]="['']"
+                        ><p class="menuItemStyle">Home</p></a
+                    >
+                </li>
+
+                <li
+                    routerLinkActive="active"
+                    [routerLinkActiveOptions]="{ exact: true }"
+                >
+                    <a [routerLink]="['dashboard']" *ngIf="(isLoggedIn | async)"
+                        ><p class="menuItemStyle">Project-Dashboard</p></a
+                    >
+                </li>
+                <!--
+                        <li
+                    routerLinkActive="active"
+                    [routerLinkActiveOptions]="{ exact: true }"
+                >
+                    <a
+                        [routerLink]="['all-in-one']"
+                        *ngIf="!(isLoggedIn | async)"
+                        >All In One</a
+                    >
+                </li>
+                -->
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li *ngIf="(isLoggedIn | async)" class="navbar-text">
+                    {{ (currentUser() | async).email }}
+                </li>
+                <li
+                    routerLinkActive="active"
+                    [routerLinkActiveOptions]="{ exact: true }"
+                    *ngIf="!(isLoggedIn | async)"
+                >
+                    <a [routerLink]="['login']">Login</a>
+                </li>
+                <li *ngIf="(isLoggedIn | async)">
+                    <a (click)="logout()" href="#">Logout</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container-fluid -->
+</nav>
+
+<div class="container-fluid zeromarginpaddingStyle">
+    <router-outlet></router-outlet>
+</div>

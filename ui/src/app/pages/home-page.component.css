@@ -1,0 +1,27 @@
+.homeStyle {
+    padding-top: 30px;
+    min-height: 100vh;
+    background-color: white;
+}
+
+.imgStyle {
+    height: 50px;
+}
+
+.jumboStyle {
+    background-color: blue;
+    color: white;
+}
+
+.dialogStyle {
+    background-color: blue;
+    color: white;
+}
+
+.carousel-caption {
+    position: relative;
+    left: auto;
+    right: auto;
+    color: black;
+    margin-top: 150px;
+}
