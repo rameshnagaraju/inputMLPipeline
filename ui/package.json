@@ -25,7 +25,7 @@
         "core-js": "2.6.1",
         "firebase": "5.7.2",
         "generate-ids": "^1.1.0",
-        "jquery": "^3.3.1",
+        "jquery": "^3.5.0",
         "ngx-bootstrap": "3.1.4",
         "rxjs": "6.3.3",
         "ts-helpers": "1.1.2",
